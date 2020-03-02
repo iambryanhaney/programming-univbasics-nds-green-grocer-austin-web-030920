@@ -35,11 +35,11 @@ def apply_coupons(cart, coupons)
   #
   # REMEMBER: This method **should** update cart
   
-  puts "\n\nPretty Printing Cart *************\n\n"
-  pp cart
-  puts "\n\nPretty Printing Coupons ***********\n\n"
-  pp coupons
-  puts "\n"
+  # puts "\n\nPretty Printing Cart *************\n\n"
+  # pp cart
+  # puts "\n\nPretty Printing Coupons ***********\n\n"
+  # pp coupons
+  # puts "\n"
   
   i = 0
   while i < coupons.length do
@@ -48,9 +48,13 @@ def apply_coupons(cart, coupons)
       item_with_coupon = item.clone
       item_with_coupon[:count] = coupon[i][:num]
       item_with_coupon[:price] = (coupon[i][:cost] / coupon[i][:count]).round(2)
-      
-    
-    
+      item_with_coupon[:item] = item_with_coupon[:item] + " W/COUPON"
+      cart << item_with_coupon
+      item[:count] -= coupon[i][:num]
+    end
+    i += 1
+  end
+  cart
 end
 
 def apply_clearance(cart)
