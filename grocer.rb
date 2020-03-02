@@ -47,7 +47,7 @@ def apply_coupons(cart, coupons)
     if (item && item[:count] >= 2)
       item_with_coupon = item.clone
       item_with_coupon[:count] = coupons[i][:num]
-      item_with_coupon[:price] = (coupons[i][:cost] / coupons[i][:count]).round(2)
+      item_with_coupon[:price] = (coupons[i][:cost] / coupons[i][:num]).round(2)
       item_with_coupon[:item] = item_with_coupon[:item] + " W/COUPON"
       cart << item_with_coupon
       item[:count] -= coupons[i][:num]
